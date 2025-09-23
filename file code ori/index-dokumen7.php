@@ -380,6 +380,25 @@ $data = getLainnyaData($startpage, $batas);
             }
         });
     </script>
+    <script>
+        // Menandai nav-link dan dropdown-item aktif berdasarkan URL saat ini
+        document.addEventListener("DOMContentLoaded", function() {
+            // Cari semua link di dalam dropdown dan nav
+            const currentPath = window.location.pathname.split("/").pop(); // Ambil nama file saat ini
+
+            // Untuk menandai dropdown terbuka jika halaman ini di dalamnya
+            if (currentPath === "index-dokumen7.php") {
+                const dokumenDropdown1 = document.querySelector("#dokumenDropdown1");
+                const lainnyaLink = document.querySelector("a[href='index-dokumen7.php']");
+
+                // Menambah kelas 'show' pada dropdown untuk tetap terbuka
+                if (dokumenDropdown1 && lainnyaLink) {
+                    dokumenDropdown1.classList.add("show");
+                    lainnyaLink.classList.add("active");
+                }
+            }
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -47,6 +47,23 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                 <li><a href="index-lainnya.php" class="dropdown-item active">Lainnya</a></li>
             </ul>
         </div>
+
+        <a href="#dokumenDropdown1" class="nav-link dropdown-toggle" data-bs-toggle="collapse" aria-expanded="false">
+            <i class="fas fa-file-alt icon"></i>Dokumen
+            
+        </a>
+        <div class="collapse" id="dokumenDropdown1">
+            <ul class="list-unstyled ms-3">
+                <li><a href="index-kebijakan.php" class="dropdown-item">Kebijakan</a></li>
+                <li><a href="index-prosedur.php" class="dropdown-item">Prosedur</a></li>
+                <li><a href="index-instruksi.php" class="dropdown-item">Instruksi Kerja</a></li>
+                <li><a href="index-manajemen.php" class="dropdown-item">Manajemen Risiko</a></li>
+                <li><a href="index-sistem.php" class="dropdown-item">Sistem Informasi Manajemen</a></li>
+                <li><a href="index-inovasi.php" class="dropdown-item">Hasil Inovasi & Benchmarking</a></li>
+                <li><a href="index-kontrak.php" class="dropdown-item">Kontrak / Perjanjian</a></li>
+                <li><a href="index-lainnya.php" class="dropdown-item">Lainnya</a></li>
+            </ul>
+        </div>
         
         <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
           <a href="halaman_input.php" class="nav-link"><i class="fas fa-upload icon"></i>Input Dokumen</a>
