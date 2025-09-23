@@ -33,7 +33,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         
         <!-- Dropdown Menu for Dokumen -->
         <a href="#dokumenDropdown" class="nav-link active dropdown-toggle" data-bs-toggle="collapse" aria-expanded="false">
-            <i class="fas fa-file-alt icon"></i>Dokumen
+            <i class="fas fa-file-alt icon"></i>Arsip Dokumen
         </a>
         <div class="collapse" id="dokumenDropdown">
             <ul class="list-unstyled ms-3">

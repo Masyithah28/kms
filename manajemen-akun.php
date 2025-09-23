@@ -93,10 +93,10 @@ $currentRole = $row['role'] ?? '';
         </div>
 
         <!-- Dropdown Menu for Dokumen -->
-        <a href="#dokumenDropdown" class="nav-link dropdown-toggle" data-bs-toggle="collapse" aria-expanded="false">
+        <a href="#dokumenDropdown1" class="nav-link dropdown-toggle" data-bs-toggle="collapse" aria-expanded="false">
             <i class="fas fa-file-alt icon"></i>Dokumen
         </a>
-        <div class="collapse" id="dokumenDropdown">
+        <div class="collapse" id="dokumenDropdown1">
             <ul class="list-unstyled ms-3">
                 <li><a href="index-dokumen1.php" class="dropdown-item">Kebijakan</a></li>
                 <li><a href="index-dokumen2.php" class="dropdown-item">Prosedur</a></li>
