@@ -264,6 +264,7 @@ body {
     padding: 12px 15px; /* Add padding for a modern look */
     vertical-align: middle; /* Align text vertically in the middle */
     border: none; /* Remove all borders by default */
+    text-align: center;
 }
 
 /* Style for the header */
