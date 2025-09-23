@@ -30,7 +30,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
           <p>Anda telah login sebagai<br><strong><?php echo $_SESSION['username']; ?></strong></p>
       </div>
       <a href="index-admin.php" class="nav-link"><i class="fas fa-home icon"></i>Master Dokumen</a>
-        
         <!-- Dropdown Menu for Dokumen -->
         <a href="#dokumenDropdown" class="nav-link active dropdown-toggle" data-bs-toggle="collapse" aria-expanded="false">
             <i class="fas fa-file-alt icon"></i>Dokumen

@@ -75,7 +75,23 @@ $currentRole = $row['role'] ?? '';
           <p>Anda telah login sebagai<br><strong><?php echo $_SESSION['username']; ?></strong></p>
       </div>
       <a href="index-admin.php" class="nav-link"><i class="fas fa-home icon"></i>Master Dokumen</a>
-        
+       
+       <!-- Dropdown Menu for Arsip Dokumen -->
+        <a href="#dokumenDropdown" class="nav-link dropdown-toggle" data-bs-toggle="collapse" aria-expanded="false">
+            <i class="fas fa-file-alt icon"></i>Arsip Dokumen
+        </a>
+        <div class="collapse" id="dokumenDropdown">
+            <ul class="list-unstyled ms-3">
+                <li><a href="index-dokumen1.php" class="dropdown-item">Kebijakan</a></li>
+                <li><a href="index-dokumen2.php" class="dropdown-item">Prosedur</a></li>
+                <li><a href="index-dokumen3.php" class="dropdown-item">Instruksi Kerja</a></li>
+                <li><a href="index-dokumen4.php" class="dropdown-item">Manajemen Risiko</a></li>
+                <li><a href="index-dokumen5.php" class="dropdown-item">Sistem Informasi Manajemen</a></li>
+                <li><a href="index-dokumen6.php" class="dropdown-item">Hasil Inovasi & Benchmarking</a></li>
+                <li><a href="index-dokumen7.php" class="dropdown-item">Dokumen Lainnya</a></li>
+            </ul>
+        </div>
+
         <!-- Dropdown Menu for Dokumen -->
         <a href="#dokumenDropdown" class="nav-link dropdown-toggle" data-bs-toggle="collapse" aria-expanded="false">
             <i class="fas fa-file-alt icon"></i>Dokumen
