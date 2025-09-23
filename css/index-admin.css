@@ -1,0 +1,398 @@
+body {
+    background-image: url('bg-main.png');
+    background-size: 100% auto; /* Lebar 100%, tinggi otomatis */
+    background-position: top center; /* Mulai dari bagian atas tengah */
+    background-repeat: no-repeat; /* Jangan ulangi gambar */
+    zoom: 0.9; /* Scale the whole page to 90% */
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Sidebar Navigation */
+.sidenav {
+    height: 100%;
+    width: 275px;
+    position: fixed;
+    background-color: #333333; /* Dark sidebar background */
+    padding-top: 20px;
+    box-shadow: 3px 0 15px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+    border-radius: 10px;
+}
+
+/* Custom scrollbar for the sidebar */
+.sidenav::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidenav::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.sidenav::-webkit-scrollbar-thumb {
+    background-color: #cc9b34;
+    border-radius: 10px;
+}
+
+.sidenav::-webkit-scrollbar-thumb:hover {
+    background-color: #cc9b34;
+}
+
+.sidenav img {
+    width: 200px;
+    margin: 0 auto 20px;
+    display: block;
+    padding: 10px;
+}
+
+/* Account Information Section */
+.sidenav .account-info {
+    text-align: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #444444; /* Darker background to match sidebar */
+    border-radius: 8px;
+    color: #ffffff; /* White text for visibility */
+    font-size: 0.9rem;
+}
+
+.sidenav .account-info p {
+    margin: 5px 0;
+    color: #e0e0e0; /* Slightly lighter white for subtext */
+}
+
+/* General nav-link style */
+.sidenav .nav-link {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    color: #ffffff; /* White text for links */
+    font-weight: bold;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 8px;
+    margin: 5px 0;
+}
+
+/* Icon spacing */
+.sidenav .nav-link .icon {
+    min-width: 24px;
+    text-align: center;
+    font-size: 1.2em;
+    margin-right: 12px;
+    color: #ffffff; /* White icons */
+}
+
+/* Hover and active states */
+.sidenav .nav-link:hover {
+    background-color: #cc9b34; /* New hover background color */
+    color: #ffffff; /* White text on hover */
+    border-radius: 8px;
+}
+
+/* Hover khusus untuk tombol Logout */
+.sidenav .nav-link.logout:hover {
+    background-color: #ff5c5c; /* Warna merah untuk hover logout */
+    color: #ffffff; /* Teks putih saat hover */
+}
+
+.sidenav .nav-link.active {
+    background-color: #3e9c35; /* Green background for active state */
+    color: #ffffff; /* White text for active */
+    border-radius: 8px;
+}
+
+.sidenav .nav-link.active .icon {
+    color: #ffffff; /* White icons for active state */
+}
+
+/* Dropdown item style */
+.sidenav .dropdown-item {
+    color: #e0e0e0; /* Slightly lighter white for dropdown items */
+    font-weight: normal;
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+/* Icon spacing for dropdown items */
+.sidenav .dropdown-item .icon {
+    min-width: 24px;
+    text-align: center;
+    margin-right: 12px;
+    color: #e0e0e0; /* Consistent icon color with dropdown text */
+}
+
+/* Hover effect for dropdown items */
+.sidenav .dropdown-item:hover {
+    background-color: #cc9b34; /* New hover background color for dropdown items */
+    color: #ffffff; /* White text on hover */
+}
+
+/* Adjust dropdown spacing */
+.sidenav .list-unstyled {
+    padding-left: 16px;
+    margin: 0;
+}
+
+/* Logo Container */
+.sidenav .logo-card {
+    background-color: #ffffff; /* White background for the logo card */
+    padding: 10px; /* Add padding to give space around the logo */
+    padding-bottom: 1px;
+    border-radius: 10px; /* Rounded corners for a modern look */
+    width: 220px; /* Adjust width to fit the sidebar */
+    margin: 0 auto 20px; /* Center align and add space below */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+.sidenav img {
+    width: 100%; /* Adjust logo to fit within the container */
+    display: block;
+}
+
+/* Content container for main content area */
+.content-container {
+    margin-left: 280px;
+    padding: 35px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .content-container {
+        margin-left: 0;
+    }
+    #searchInput {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+.footer-text {
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 25px;
+}
+
+/* Style for statistic cards */
+.custom-card {
+    background-color: #ffffff; /* Card background color */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    border-radius: 15px; /* Rounded corners */
+    padding: 20px; /* Inner padding */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transition */
+}
+
+/* Hover effect for cards */
+.custom-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15); /* Slightly deeper shadow on hover */
+}
+
+/* Style umum untuk icon-container */
+.icon-container {
+    border-radius: 50%; /* Membuat lingkaran */
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    color: white; /* Warna ikon di dalam lingkaran */
+}
+
+/* Warna untuk masing-masing kategori */
+.icon-container.total {
+    background-color: #cc9b34; /* Warna untuk Total Dokumen */
+}
+
+.icon-container.aktif {
+    background-color: #3e9c35; /* Warna untuk Dokumen Aktif */
+}
+
+.icon-container.tidak-aktif {
+    background-color: #ff5c5c; /* Warna untuk Dokumen Tidak Aktif */
+}
+
+/* Style for icons inside cards */
+.icon-con {
+    color: white; /* White color for icons */
+    font-size: 1.5rem; /* Larger icon size */
+}
+
+/* Style for the title inside statistic cards */
+.card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #000000;
+}
+
+/* Style for the statistic value */
+.count-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #000000; /* Highlighted color for the value */
+}
+
+.header-container {
+    margin-top: 2vh; /* Memberikan margin top sebesar 5% dari tinggi layar */
+}
+
+/* Style for the table container */
+.table-responsive {
+    border-radius: 15px; /* Rounded corners for the table container */
+    overflow: hidden; /* Ensures rounded corners are visible */
+}
+
+/* Style for the table */
+.table {
+    border-collapse: separate; /* Separate borders for each cell */
+    border-spacing: 0; /* Set spacing between cells to zero */
+    width: 100%;
+}
+
+/* Rounded corners for table rows */
+.table th,
+.table td {
+    padding: 12px 15px; /* Add padding for a modern look */
+    vertical-align: middle; /* Align text vertically in the middle */
+    border: none; /* Remove all borders by default */
+}
+
+/* Style for the header */
+.table thead th {
+    background-color: #333333; /* Light background for header */
+    color: #FFFFFF; /* White font color for header text */
+    font-weight: 600; /* Semi-bold for header text */
+}
+
+/* Style for table rows with horizontal borders */
+.table tbody tr td {
+    border-bottom: 1px solid #333333; /* Add black horizontal border */
+}
+
+/* Style for table rows */
+.table tbody tr {
+    background-color: #ffffff; /* White background for rows */
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+.table tbody tr:hover {
+    background-color: #f1f1f1; /* Light grey on hover */
+}
+
+/* Custom margin for action buttons */
+.btn-action {
+    margin-right: 5px;
+}
+
+.btn-action:last-child {
+    margin-right: 0;
+}
+
+/* Style for pagination */
+.pagination .page-item .page-link {
+    color: #000000; /* Warna teks untuk semua pagination links */
+    background-color: #f1f1f1; /* Background light untuk tampilan bersih */
+    border: 1px solid #ddd; /* Border ringan untuk pemisahan */
+    border-radius: 8px; /* Rounded corners */
+    margin: 0 5px; /* Spacing antara links */
+    transition: background-color 0.3s ease; /* Transition smooth */
+}
+
+.pagination .page-item:hover .page-link {
+    background-color: #cc9b34; /* Hijau sekunder untuk efek hover */
+    color: #ffffff; /* Teks putih saat di-hover */
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #cccccc; /* Warna abu-abu untuk tombol yang dinonaktifkan */
+    background-color: #f1f1f1; /* Background light */
+    border-color: #ddd;
+}
+
+/* Active Pagination Button */
+.pagination .page-item.active .page-link {
+    background-color: #3e9c35; /* Kuning lembut */
+    color: #ffffff;
+    border-color: #3e9c35;
+}
+
+/* Background putih pada bagian Search */
+.input-group-text {
+    background-color: #ffffff; /* Putih untuk latar belakang */
+    border: 1px solid #ced4da; /* Tambahkan border agar selaras dengan input */
+    color: #333333; /* Warna teks dan ikon */
+}
+
+/* Input Search dengan latar belakang putih */
+#searchInput {
+    background-color: #ffffff; /* Warna latar belakang putih */
+    border: 1px solid #ced4da; /* Border yang sama agar tampak serasi */
+}
+
+.modal-backdrop {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+}
+
+.modal {
+    margin-top: 15vh;
+    position: fixed;
+}
+
+.modal-open {
+    overflow: hidden !important;
+}
+
+/* Custom modal width */
+.modal-dialog {
+    max-width: 800px; /* Atur lebar sesuai kebutuhan, contoh: 800px */
+}
+
+/* Tombol Batal */
+.modal-footer .btn-secondary {
+    background-color: #ff5c5c; /* Warna merah untuk tombol Batal */
+    border-color: #ff5c5c; /* Sesuaikan warna border */
+    color: #ffffff; /* Warna teks putih */
+}
+
+.modal-footer .btn-secondary:hover {
+    background-color: #e04b4b; /* Warna lebih gelap saat di-hover */
+    border-color: #e04b4b;
+}
+
+/* Tombol Simpan Perubahan */
+.modal-footer .btn-primary {
+    background-color: #3e9c35; /* Warna hijau untuk tombol Simpan Perubahan */
+    border-color: #3e9c35; /* Sesuaikan warna border */
+    color: #ffffff; /* Warna teks putih */
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: #36862d; /* Warna lebih gelap saat di-hover */
+    border-color: #36862d;
+}
+
+/* Tanda aktif untuk item di dalam dropdown */
+.sidenav .dropdown-item.active {
+    background-color: #3e9c35; /* Background warna hijau untuk item aktif */
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* Hover effect untuk dropdown item aktif */
+.sidenav .dropdown-item.active:hover {
+    background-color: #3e9c35; /* Warna tetap sama saat di-hover */
+    color: #ffffff;
+}
