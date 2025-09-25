@@ -101,6 +101,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                         <th onclick="sortTable(4)" class="sortable" style="width: 120px;">Status <i class="fas fa-sort sort-icon"></i></th>
                         <th onclick="sortTable(5)" class="sortable" style="width: 130px;">Tanggal Upload <i class="fas fa-sort sort-icon"></i></th>
                         <th onclick="sortTable(6)" class="sortable" style="width: 130px;">Tanggal Masa Berlaku <i class="fas fa-sort sort-icon"></i></th>
+                        <th onclick="sortTable(7)" class="sortable" style="width: 190px;">Bidang <i class="fas fa-sort sort-icon"></i></th>
                         <th style="width: 190px;">Detail</th>
                     </tr>
                 </thead>
@@ -138,6 +139,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                             echo "</td>";
                             echo "<td class='text-center'>" . date("d-m-Y", strtotime($row['tgl_up'])) . "</td>";
                             echo "<td class='text-center'>" . date("d-m-Y", strtotime($row['tgl_berlaku'])) . "</td>";
+                            echo "<td class='text-center'> - </td>";
                             echo "<td class='text-center'>";
                             echo "<a href='aksiDownload.php?url={$row['berkas']}' class='btn btn-sm btn-action' style='background-color: #3e9c35; color: white;' title='Download'><i class='fas fa-download'></i></a>";
                             echo "<a href='aksiShow.php?url={$row['berkas']}' target='_blank' class='btn btn-sm btn-action' style='background-color: #a3e089; color: white;' title='Show'><i class='fas fa-eye'></i></a>"; // Warna show bebas, contoh menggunakan abu-abu
