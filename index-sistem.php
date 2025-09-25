@@ -111,7 +111,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                     require_once 'koneksi.php';
 
                     $nomor_urut = 0;
-                    $result = selectSistemData();
+                    $result = selectSistemDataTDokumen();
                     $countData = mysqli_num_rows($result);
 
                     $batas = 15;
@@ -122,17 +122,17 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                     $prev = $page - 1;
                     $next = $page + 1;
 
-                    $result = selectPageSistem($startpage, $batas);
+                    $result = selectPageSistemTDokumen($startpage, $batas);
 
                     if ($countData < 1) {
-                        echo "<tr><td colspan='8' class='text-center fw-bold'>TIDAK ADA DATA</td></tr>";
+                        echo "<tr><td colspan='9' class='text-center fw-bold'>TIDAK ADA DATA</td></tr>";
                     } else {
                         $nomor_urut = $startpage + 1;
                         while ($row = mysqli_fetch_assoc($result)) {
                             echo "<tr>";
                             echo "<td class='text-center'>" . $nomor_urut++ . "</td>";
-                            echo "<td>{$row['id_berkas']}</td>";
-                            echo "<td>{$row['nama_berkas']}</td>";
+                            echo "<td>{$row['id_dokumen']}</td>";
+                            echo "<td>{$row['nama_dokumen']}</td>";
                             echo "<td>{$row['kategori']}</td>";
                             $statusClass = ($row['status'] === 'Tidak Aktif') ? 'btn-danger' : 'btn-success';
                             echo "<td class='text-center'>";
@@ -140,10 +140,10 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                             echo "</td>";
                             echo "<td class='text-center'>" . date("d-m-Y", strtotime($row['tgl_up'])) . "</td>";
                             echo "<td class='text-center'>" . date("d-m-Y", strtotime($row['tgl_berlaku'])) . "</td>";
-                            echo "<td class='text-center'> - </td>";
+                            echo "<td class='text-center'>{$row['nama_bidang']}</td>";
                             echo "<td class='text-center'>";
-                            echo "<a href='aksiDownload.php?url={$row['berkas']}' class='btn btn-sm btn-action' style='background-color: #3e9c35; color: white;' title='Download'><i class='fas fa-download'></i></a>";
-                            echo "<a href='aksiShow.php?url={$row['berkas']}' target='_blank' class='btn btn-sm btn-action' style='background-color: #a3e089; color: white;' title='Show'><i class='fas fa-eye'></i></a>"; // Warna show bebas, contoh menggunakan abu-abu
+                            echo "<a href='aksiDownload.php?url={$row['dokumen']}' class='btn btn-sm btn-action' style='background-color: #3e9c35; color: white;' title='Download'><i class='fas fa-download'></i></a>";
+                            echo "<a href='aksiShow.php?url={$row['dokumen']}' target='_blank' class='btn btn-sm btn-action' style='background-color: #a3e089; color: white;' title='Show'><i class='fas fa-eye'></i></a>"; // Warna show bebas, contoh menggunakan abu-abu
 
                             // Batasi tombol delete hanya untuk admin
                             if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
@@ -153,20 +153,20 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                         title='Edit' 
                                         data-bs-toggle='modal' 
                                         data-bs-target='#editModal' 
-                                        data-id='{$row['id_berkas']}' 
-                                        data-kode='{$row['id_berkas']}'
-                                        data-nama='{$row['nama_berkas']}' 
+                                        data-id='{$row['id_dokumen']}' 
+                                        data-kode='{$row['id_dokumen']}'
+                                        data-nama='{$row['nama_dokumen']}' 
                                         data-kategori='{$row['kategori']}' 
                                         data-status='{$row['status']}' 
                                         data-tanggal-berlaku='{$row['tgl_berlaku']}'
-                                        data-file='{$row['berkas']}'>
+                                        data-file='{$row['dokumen']}'>
                                         <i class='fas fa-edit'></i>
                                     </a>";  
                                     echo "<a href='#' 
                                             class='btn btn-sm btn-action' 
                                             style='background-color: #e74c3c; color: white;' 
                                             title='Delete' 
-                                            onclick=\"return confirmDelete('aksiHapus.php?kodedelete={$row['id_berkas']}')\">
+                                            onclick=\"return confirmDelete('aksiHapus.php?kodedelete={$row['id_dokumen']}')\">
                                             <i class='fas fa-trash-alt'></i>
                                         </a>";                             
                             }
