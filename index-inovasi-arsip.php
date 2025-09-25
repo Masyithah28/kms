@@ -32,12 +32,12 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
       <a href="index-admin.php" class="nav-link"><i class="fas fa-home icon"></i>Master Dokumen</a>
         
         <!-- Dropdown Menu for Dokumen -->
-        <a href="#dokumenDropdown" class="nav-link dropdown-toggle" data-bs-toggle="collapse" aria-expanded="false">
+        <a href="#dokumenDropdown" class="nav-link active dropdown-toggle" data-bs-toggle="collapse" aria-expanded="false">
             <i class="fas fa-file-alt icon"></i>Arsip Dokumen
         </a>
         <div class="collapse" id="dokumenDropdown">
             <ul class="list-unstyled ms-3">
-               <li><a href="index-kebijakan-arsip.php" class="dropdown-item">Kebijakan</a></li>
+                <li><a href="index-kebijakan-arsip.php" class="dropdown-item">Kebijakan</a></li>
                 <li><a href="index-prosedur-arsip.php" class="dropdown-item">Prosedur</a></li>
                 <li><a href="index-instruksi-arsip.php" class="dropdown-item">Instruksi Kerja</a></li>
                 <li><a href="index-manajemen-arsip.php" class="dropdown-item">Manajemen Risiko</a></li>
@@ -48,7 +48,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             </ul>
         </div>
         
-        <a href="#dokumenDropdown1" class="nav-link dropdown-toggle active" data-bs-toggle="collapse" aria-expanded="false">
+        <a href="#dokumenDropdown1" class="nav-link dropdown-toggle" data-bs-toggle="collapse" aria-expanded="false">
             <i class="fas fa-file-alt icon"></i>Dokumen
             
         </a>
@@ -408,14 +408,14 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             const currentPath = window.location.pathname.split("/").pop(); // Ambil nama file saat ini
 
             // Untuk menandai dropdown terbuka jika halaman ini di dalamnya
-            if (currentPath === "index-inovasi.php") {
-                const dokumenDropdown1 = document.querySelector("#dokumenDropdown1");
-                const inovasiLink1 = document.querySelector("a[href='index-inovasi.php']");
+            if (currentPath === "index-inovasi-arsip.php") {
+                const dokumenDropdown = document.querySelector("#dokumenDropdown");
+                const inovasiLink = document.querySelector("a[href='index-inovasi-arsip.php']");
 
                 // Menambah kelas 'show' pada dropdown untuk tetap terbuka
-                if (dokumenDropdown1 && inovasiLink1) {
-                    dokumenDropdown1.classList.add("show");
-                    inovasiLink1.classList.add("active");
+                if (dokumenDropdown && inovasiLink) {
+                    dokumenDropdown.classList.add("show");
+                    inovasiLink.classList.add("active");
                 }
             }
         });

@@ -32,23 +32,23 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
       <a href="index-admin.php" class="nav-link"><i class="fas fa-home icon"></i>Master Dokumen</a>
         
         <!-- Dropdown Menu for Dokumen -->
-        <a href="#dokumenDropdown" class="nav-link active dropdown-toggle" data-bs-toggle="collapse" aria-expanded="false">
+        <a href="#dokumenDropdown" class="nav-link dropdown-toggle" data-bs-toggle="collapse" aria-expanded="false">
             <i class="fas fa-file-alt icon"></i>Arsip Dokumen
         </a>
         <div class="collapse" id="dokumenDropdown">
             <ul class="list-unstyled ms-3">
-                <li><a href="index-kebijakan.php" class="dropdown-item">Kebijakan</a></li>
-                <li><a href="index-prosedur.php" class="dropdown-item ">Prosedur</a></li>
-                <li><a href="index-instruksi.php" class="dropdown-item">Instruksi Kerja</a></li>
-                <li><a href="index-manajemen.php" class="dropdown-item">Manajemen Risiko</a></li>
-                <li><a href="index-sistem.php" class="dropdown-item">Sistem Informasi Manajemen</a></li>
-                <li><a href="index-inovasi.php" class="dropdown-item">Hasil Inovasi & Benchmarking</a></li>
-                <li><a href="index-kontrak.php" class="dropdown-item">Kontrak / Perjanjian</a></li>
-                <li><a href="index-lainnya.php" class="dropdown-item active">Lainnya</a></li>
+               <li><a href="index-kebijakan-arsip.php" class="dropdown-item">Kebijakan</a></li>
+                <li><a href="index-prosedur-arsip.php" class="dropdown-item">Prosedur</a></li>
+                <li><a href="index-instruksi-arsip.php" class="dropdown-item">Instruksi Kerja</a></li>
+                <li><a href="index-manajemen-arsip.php" class="dropdown-item">Manajemen Risiko</a></li>
+                <li><a href="index-sistem-arsip.php" class="dropdown-item">Sistem Informasi Manajemen</a></li>
+                <li><a href="index-inovasi-arsip.php" class="dropdown-item">Hasil Inovasi & Benchmarking</a></li>
+                <li><a href="index-kontrak-arsip.php" class="dropdown-item">Kontrak / Perjanjian</a></li>
+                <li><a href="index-lainnya-arsip.php" class="dropdown-item">Lainnya</a></li>
             </ul>
         </div>
 
-        <a href="#dokumenDropdown1" class="nav-link dropdown-toggle" data-bs-toggle="collapse" aria-expanded="false">
+        <a href="#dokumenDropdown1" class="nav-link active dropdown-toggle" data-bs-toggle="collapse" aria-expanded="false">
             <i class="fas fa-file-alt icon"></i>Dokumen
             
         </a>
@@ -409,13 +409,32 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
             // Untuk menandai dropdown terbuka jika halaman ini di dalamnya
             if (currentPath === "index-lainnya.php") {
-                const dokumenDropdown = document.querySelector("#dokumenDropdown");
+                const dokumenDropdown1 = document.querySelector("#dokumenDropdown1");
                 const lainnyaLink = document.querySelector("a[href='index-lainnya.php']");
 
                 // Menambah kelas 'show' pada dropdown untuk tetap terbuka
-                if (dokumenDropdown && lainnyaLink) {
-                    dokumenDropdown.classList.add("show");
+                if (dokumenDropdown1 && lainnyaLink) {
+                    dokumenDropdown1.classList.add("show");
                     lainnyaLink.classList.add("active");
+                }
+            }
+        });
+    </script>
+    <script>
+        // Menandai nav-link dan dropdown-item aktif berdasarkan URL saat ini
+        document.addEventListener("DOMContentLoaded", function() {
+            // Cari semua link di dalam dropdown dan nav
+            const currentPath = window.location.pathname.split("/").pop(); // Ambil nama file saat ini
+
+            // Untuk menandai dropdown terbuka jika halaman ini di dalamnya
+            if (currentPath === "index-kebijakan.php") {
+                const dokumenDropdown1 = document.querySelector("#dokumenDropdown1");
+                const kebijakanLink = document.querySelector("a[href='index-kebijakan.php']");
+
+                // Menambah kelas 'show' pada dropdown untuk tetap terbuka
+                if (dokumenDropdown1 && kebijakanLink) {
+                    dokumenDropdown1.classList.add("show");
+                    kebijakanLink.classList.add("active");
                 }
             }
         });
