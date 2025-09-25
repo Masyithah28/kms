@@ -12,7 +12,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dokumen Hasil Inovasi & Benchmarking - PT Petrokopindo Cipta Selaras</title>
+    <title>Dokumen Sistem Informasi Manajemen - PT Petrokopindo Cipta Selaras</title>
     <link rel="icon" type="image/x-icon" href="css/icon-corp.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -32,7 +32,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
       <a href="index-admin.php" class="nav-link"><i class="fas fa-home icon"></i>Master Dokumen</a>
         
         <!-- Dropdown Menu for Dokumen -->
-        <a href="#dokumenDropdown" class="nav-link dropdown-toggle" data-bs-toggle="collapse" aria-expanded="false">
+        <a href="#dokumenDropdown" class="nav-link active dropdown-toggle" data-bs-toggle="collapse" aria-expanded="false">
             <i class="fas fa-file-alt icon"></i>Arsip Dokumen
         </a>
         <div class="collapse" id="dokumenDropdown">
@@ -47,8 +47,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                 <li><a href="index-lainnya-arsip.php" class="dropdown-item">Lainnya</a></li>
             </ul>
         </div>
-        
-        <a href="#dokumenDropdown1" class="nav-link dropdown-toggle active" data-bs-toggle="collapse" aria-expanded="false">
+
+        <a href="#dokumenDropdown1" class="nav-link dropdown-toggle" data-bs-toggle="collapse" aria-expanded="false">
             <i class="fas fa-file-alt icon"></i>Dokumen
             
         </a>
@@ -79,7 +79,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         <div class="header-container d-flex justify-content-between align-items-center mb-3">
             <div>
                 <h2 class="fw-bold mb-0">DAFTAR DOKUMEN</h2>
-                <h2 class="fw-bold mb-0">HASIL INOVASI & BENCHMARKING</h2>
+                <h2 class="fw-bold mb-0">DOKUMEN LAIN-LAIN</h2>
             </div>
             <!-- Input Group untuk Field Pencarian -->
             <div class="input-group" style="width: 340px; margin-top: 6vh;">
@@ -110,7 +110,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                     require_once 'koneksi.php';
 
                     $nomor_urut = 0;
-                    $result = selectInovasiData();
+                    $result = selectSistemData();
                     $countData = mysqli_num_rows($result);
 
                     $batas = 15;
@@ -121,7 +121,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                     $prev = $page - 1;
                     $next = $page + 1;
 
-                    $result = selectPageInovasi($startpage, $batas);
+                    $result = selectPageSistem($startpage, $batas);
 
                     if ($countData < 1) {
                         echo "<tr><td colspan='8' class='text-center fw-bold'>TIDAK ADA DATA</td></tr>";
@@ -331,7 +331,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
             // Create an AJAX request
             const xhr = new XMLHttpRequest();
-            xhr.open('GET', 'search-inovasi.php?query=' + encodeURIComponent(query), true);
+            xhr.open('GET', 'search-sistem.php?query=' + encodeURIComponent(query), true);
 
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
@@ -368,7 +368,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         // Perform AJAX request to fetch sorted data
         const xhr = new XMLHttpRequest();
         const query = document.getElementById('searchInput').value; // Get current search input value
-        xhr.open('GET', `search-inovasi.php?query=${encodeURIComponent(query)}&column=${encodeURIComponent(column)}&direction=${encodeURIComponent(newDirection)}`, true);
+        xhr.open('GET', `search-sistem.php?query=${encodeURIComponent(query)}&column=${encodeURIComponent(column)}&direction=${encodeURIComponent(newDirection)}`, true);
 
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
@@ -408,14 +408,14 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             const currentPath = window.location.pathname.split("/").pop(); // Ambil nama file saat ini
 
             // Untuk menandai dropdown terbuka jika halaman ini di dalamnya
-            if (currentPath === "index-inovasi.php") {
-                const dokumenDropdown1 = document.querySelector("#dokumenDropdown1");
-                const inovasiLink1 = document.querySelector("a[href='index-inovasi.php']");
+            if (currentPath === "index-sistem-arsip.php") {
+                const dokumenDropdown = document.querySelector("#dokumenDropdown");
+                const sistemLink = document.querySelector("a[href='index-sistem-arsip.php']");
 
                 // Menambah kelas 'show' pada dropdown untuk tetap terbuka
-                if (dokumenDropdown1 && inovasiLink1) {
-                    dokumenDropdown1.classList.add("show");
-                    inovasiLink1.classList.add("active");
+                if (dokumenDropdown && sistemLink) {
+                    dokumenDropdown.classList.add("show");
+                    sistemLink.classList.add("active");
                 }
             }
         });

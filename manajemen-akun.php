@@ -84,29 +84,31 @@ $currentRole = $row['role'] ?? '';
         </a>
         <div class="collapse" id="dokumenDropdown">
             <ul class="list-unstyled ms-3">
-                <li><a href="index-dokumen1.php" class="dropdown-item">Kebijakan</a></li>
-                <li><a href="index-dokumen2.php" class="dropdown-item">Prosedur</a></li>
-                <li><a href="index-dokumen3.php" class="dropdown-item">Instruksi Kerja</a></li>
-                <li><a href="index-dokumen4.php" class="dropdown-item">Manajemen Risiko</a></li>
-                <li><a href="index-dokumen5.php" class="dropdown-item">Sistem Informasi Manajemen</a></li>
-                <li><a href="index-dokumen6.php" class="dropdown-item">Hasil Inovasi & Benchmarking</a></li>
-                <li><a href="index-dokumen7.php" class="dropdown-item">Dokumen Lainnya</a></li>
+               <li><a href="index-kebijakan-arsip.php" class="dropdown-item">Kebijakan</a></li>
+                <li><a href="index-prosedur-arsip.php" class="dropdown-item">Prosedur</a></li>
+                <li><a href="index-instruksi-arsip.php" class="dropdown-item">Instruksi Kerja</a></li>
+                <li><a href="index-manajemen-arsip.php" class="dropdown-item">Manajemen Risiko</a></li>
+                <li><a href="index-sistem-arsip.php" class="dropdown-item">Sistem Informasi Manajemen</a></li>
+                <li><a href="index-inovasi-arsip.php" class="dropdown-item">Hasil Inovasi & Benchmarking</a></li>
+                <li><a href="index-kontrak-arsip.php" class="dropdown-item">Kontrak / Perjanjian</a></li>
+                <li><a href="index-lainnya-arsip.php" class="dropdown-item">Lainnya</a></li>
             </ul>
         </div>
 
         <!-- Dropdown Menu for Dokumen -->
-        <a href="#dokumenDropdown" class="nav-link dropdown-toggle" data-bs-toggle="collapse" aria-expanded="false">
+        <a href="#dokumenDropdown1" class="nav-link dropdown-toggle" data-bs-toggle="collapse" aria-expanded="false">
             <i class="fas fa-file-alt icon"></i>Dokumen
         </a>
-        <div class="collapse" id="dokumenDropdown">
+        <div class="collapse" id="dokumenDropdown1">
             <ul class="list-unstyled ms-3">
-                <li><a href="index-dokumen1.php" class="dropdown-item">Kebijakan</a></li>
-                <li><a href="index-dokumen2.php" class="dropdown-item">Prosedur</a></li>
-                <li><a href="index-dokumen3.php" class="dropdown-item">Instruksi Kerja</a></li>
-                <li><a href="index-dokumen4.php" class="dropdown-item">Manajemen Risiko</a></li>
-                <li><a href="index-dokumen5.php" class="dropdown-item">Sistem Informasi Manajemen</a></li>
-                <li><a href="index-dokumen6.php" class="dropdown-item">Hasil Inovasi & Benchmarking</a></li>
-                <li><a href="index-dokumen7.php" class="dropdown-item">Dokumen Lainnya</a></li>
+                <li><a href="index-kebijakan.php" class="dropdown-item">Kebijakan</a></li>
+                <li><a href="index-prosedur.php" class="dropdown-item">Prosedur</a></li>
+                <li><a href="index-instruksi.php" class="dropdown-item">Instruksi Kerja</a></li>
+                <li><a href="index-manajemen.php" class="dropdown-item">Manajemen Risiko</a></li>
+                <li><a href="index-sistem.php" class="dropdown-item">Sistem Informasi Manajemen</a></li>
+                <li><a href="index-inovasi.php" class="dropdown-item">Hasil Inovasi & Benchmarking</a></li>
+                <li><a href="index-kontrak.php" class="dropdown-item">Kontrak / Perjanjian</a></li>
+                <li><a href="index-lainnya.php" class="dropdown-item">Lainnya</a></li>
             </ul>
         </div>
 

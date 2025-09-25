@@ -361,7 +361,7 @@ $data = getLainnyaData($startpage, $batas);
         }
     }
     </script>
-    <script>
+    <!-- <script>
         // Menandai nav-link dan dropdown-item aktif berdasarkan URL saat ini
         document.addEventListener("DOMContentLoaded", function() {
             // Cari semua link di dalam dropdown dan nav
@@ -398,7 +398,7 @@ $data = getLainnyaData($startpage, $batas);
                 }
             }
         });
-    </script>
+    </script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
