@@ -8,9 +8,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = mysqli_real_escape_string($con, $_POST['username']);
     $email = mysqli_real_escape_string($con, $_POST['email']);
     $role = mysqli_real_escape_string($con, $_POST['role']);
+    $bidang = mysqli_real_escape_string($con, $_POST['bidang']);
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hashing the password
 
-    $query = "INSERT INTO users (username, email, password, role) VALUES ('$username', '$email', '$password', '$role')";
+    $query = "INSERT INTO users (username, email, password, role, id_bidang) VALUES ('$username', '$email', '$password', '$role', '$bidang')";
     if (mysqli_query($con, $query)) {
         $_SESSION['success'] = "Akun berhasil ditambahkan.";
     } else {
@@ -20,4 +21,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header("Location: manajemen-akun.php");
     exit();
 }
-?>

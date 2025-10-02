@@ -11,6 +11,14 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true || $_SESSION
 // Ambil koneksi dari fungsi koneksiDB
 $con = koneksiDB();
 
+// Ambil data bidang dari tabel tb_bidang
+$queryBidang = "SELECT id, nama_bidang FROM tb_bidang ORDER BY nama_bidang ASC";
+$resultBidang = mysqli_query($con, $queryBidang);
+$bidangOptions = [];
+while ($rowBidang = mysqli_fetch_assoc($resultBidang)) {
+    $bidangOptions[] = $rowBidang;
+}
+
 // Hitung total data
 $queryCount = "SELECT COUNT(*) as total FROM users";
 $resultCount = mysqli_query($con, $queryCount);
@@ -25,7 +33,10 @@ $prevPage = $page - 1;
 $nextPage = $page + 1;
 
 // Ambil data pengguna dengan limit dan offset untuk pagination
-$query = "SELECT * FROM users LIMIT $start, $perPage";
+$query = "SELECT u.*, b.nama_bidang 
+          FROM users u 
+          LEFT JOIN tb_bidang b ON u.id_bidang = b.id 
+          LIMIT $start, $perPage";
 $result = mysqli_query($con, $query);
 
 $roles = [
@@ -49,7 +60,7 @@ $roles = [
     'pengembangan_usaha' => 'Pengembangan Usaha',
 ];
 
-$currentRole = $row['role'] ?? '';
+// $currentRole = $row['role'] ?? '';
 
 ?>
 
@@ -84,31 +95,29 @@ $currentRole = $row['role'] ?? '';
         </a>
         <div class="collapse" id="dokumenDropdown">
             <ul class="list-unstyled ms-3">
-               <li><a href="index-kebijakan-arsip.php" class="dropdown-item">Kebijakan</a></li>
-                <li><a href="index-prosedur-arsip.php" class="dropdown-item">Prosedur</a></li>
-                <li><a href="index-instruksi-arsip.php" class="dropdown-item">Instruksi Kerja</a></li>
-                <li><a href="index-manajemen-arsip.php" class="dropdown-item">Manajemen Risiko</a></li>
-                <li><a href="index-sistem-arsip.php" class="dropdown-item">Sistem Informasi Manajemen</a></li>
-                <li><a href="index-inovasi-arsip.php" class="dropdown-item">Hasil Inovasi & Benchmarking</a></li>
-                <li><a href="index-kontrak-arsip.php" class="dropdown-item">Kontrak / Perjanjian</a></li>
-                <li><a href="index-lainnya-arsip.php" class="dropdown-item">Lainnya</a></li>
+                <li><a href="index-dokumen1.php" class="dropdown-item">Kebijakan</a></li>
+                <li><a href="index-dokumen2.php" class="dropdown-item">Prosedur</a></li>
+                <li><a href="index-dokumen3.php" class="dropdown-item">Instruksi Kerja</a></li>
+                <li><a href="index-dokumen4.php" class="dropdown-item">Manajemen Risiko</a></li>
+                <li><a href="index-dokumen5.php" class="dropdown-item">Sistem Informasi Manajemen</a></li>
+                <li><a href="index-dokumen6.php" class="dropdown-item">Hasil Inovasi & Benchmarking</a></li>
+                <li><a href="index-dokumen7.php" class="dropdown-item">Dokumen Lainnya</a></li>
             </ul>
         </div>
 
         <!-- Dropdown Menu for Dokumen -->
-        <a href="#dokumenDropdown1" class="nav-link dropdown-toggle" data-bs-toggle="collapse" aria-expanded="false">
+        <a href="#dokumenDropdown" class="nav-link dropdown-toggle" data-bs-toggle="collapse" aria-expanded="false">
             <i class="fas fa-file-alt icon"></i>Dokumen
         </a>
-        <div class="collapse" id="dokumenDropdown1">
+        <div class="collapse" id="dokumenDropdown">
             <ul class="list-unstyled ms-3">
-                <li><a href="index-kebijakan.php" class="dropdown-item">Kebijakan</a></li>
-                <li><a href="index-prosedur.php" class="dropdown-item">Prosedur</a></li>
-                <li><a href="index-instruksi.php" class="dropdown-item">Instruksi Kerja</a></li>
-                <li><a href="index-manajemen.php" class="dropdown-item">Manajemen Risiko</a></li>
-                <li><a href="index-sistem.php" class="dropdown-item">Sistem Informasi Manajemen</a></li>
-                <li><a href="index-inovasi.php" class="dropdown-item">Hasil Inovasi & Benchmarking</a></li>
-                <li><a href="index-kontrak.php" class="dropdown-item">Kontrak / Perjanjian</a></li>
-                <li><a href="index-lainnya.php" class="dropdown-item">Lainnya</a></li>
+                <li><a href="index-dokumen1.php" class="dropdown-item">Kebijakan</a></li>
+                <li><a href="index-dokumen2.php" class="dropdown-item">Prosedur</a></li>
+                <li><a href="index-dokumen3.php" class="dropdown-item">Instruksi Kerja</a></li>
+                <li><a href="index-dokumen4.php" class="dropdown-item">Manajemen Risiko</a></li>
+                <li><a href="index-dokumen5.php" class="dropdown-item">Sistem Informasi Manajemen</a></li>
+                <li><a href="index-dokumen6.php" class="dropdown-item">Hasil Inovasi & Benchmarking</a></li>
+                <li><a href="index-dokumen7.php" class="dropdown-item">Dokumen Lainnya</a></li>
             </ul>
         </div>
 
@@ -146,6 +155,7 @@ $currentRole = $row['role'] ?? '';
                         <th onclick="sortTable(1)" class="sortable">Username <i class="fas fa-sort"></i></th>
                         <th onclick="sortTable(2)" class="sortable">Email <i class="fas fa-sort"></i></th>
                         <th onclick="sortTable(3)" class="sortable">Role <i class="fas fa-sort"></i></th>
+                        <th onclick="sortTable(4)" class="sortable">Bidang <i class="fas fa-sort"></i></th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -154,18 +164,22 @@ $currentRole = $row['role'] ?? '';
                     $no = $start + 1; // Menentukan nomor urut berdasarkan halaman
                     while ($row = mysqli_fetch_assoc($result)):
                     ?>
-                    <tr class="">
-                        <td class=" text-center"><?php echo $no++; ?></td> <!-- Nomor urut -->
+                    <tr>
+                        <td><?php echo $no++; ?></td> <!-- Nomor urut -->
                         <td><?php echo $row['username']; ?></td>
                         <td><?php echo $row['email']; ?></td>
-                        <td class="text-center">
+                        <td>
                             <?php echo isset($roles[$row['role']]) ? $roles[$row['role']] : ucfirst($row['role']); ?>
                         </td>
-                        <td class="text-center">
+                        <td>
+                            <?php echo $row['nama_bidang'] ?? '-'; ?>
+                        </td>
+                        <td class=" text-center">
                             <button class="btn btn-warning btn-sm edit-btn" data-id="<?php echo $row['id']; ?>"
                                 data-username="<?php echo $row['username']; ?>"
                                 data-email="<?php echo $row['email']; ?>" data-role="<?php echo $row['role']; ?>"
-                                data-bs-toggle="modal" data-bs-target="#editUserModal">
+                                data-bidang="<?php echo $row['id_bidang']; ?>" data-bs-toggle="modal"
+                                data-bs-target="#editUserModal">
                                 Edit
                             </button>
                             <a href="aksiHapusUser.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm"
@@ -194,7 +208,7 @@ $currentRole = $row['role'] ?? '';
                 <?php endfor; ?>
                 <li class="page-item <?php if ($page >= $totalPages) echo 'disabled'; ?>">
                     <a class="page-link" href="<?php if ($page < $totalPages) echo "?p=$nextPage";
-                                else echo '#'; ?>">Next &raquo;</a>
+                                                else echo '#'; ?>">Next &raquo;</a>
                 </li>
             </ul>
         </nav>
@@ -221,8 +235,18 @@ $currentRole = $row['role'] ?? '';
                         <div class="mb-3">
                             <label for="role" class="form-label">Role</label>
                             <select class="form-control" id="role" name="role" required>
+                                <option value="">Pilih Role</option>
                                 <?php foreach ($roles as $value => $label): ?>
                                 <option value="<?= $value; ?>"><?= $label; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="bidang" class="form-label">Bidang</label>
+                            <select class="form-control" id="bidang" name="bidang" required>
+                                <option value="">Pilih Bidang</option>
+                                <?php foreach ($bidangOptions as $bidang): ?>
+                                <option value="<?= $bidang['id']; ?>"><?= $bidang['nama_bidang']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -263,9 +287,16 @@ $currentRole = $row['role'] ?? '';
                             <label for="edit_role" class="form-label">Role</label>
                             <select class="form-control" id="edit_role" name="role" required>
                                 <?php foreach ($roles as $value => $label): ?>
-                                <option value="<?= $value; ?>" <?= ($currentRole === $value) ? 'selected' : ''; ?>>
-                                    <?= $label; ?>
-                                </option>
+                                <option value="<?= $value; ?>"><?= $label; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit_bidang" class="form-label">Bidang</label>
+                            <select class="form-control" id="edit_bidang" name="bidang" required>
+                                <option value="">Pilih Bidang</option>
+                                <?php foreach ($bidangOptions as $bidang): ?>
+                                <option value="<?= $bidang['id']; ?>"><?= $bidang['nama_bidang']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -307,12 +338,14 @@ $currentRole = $row['role'] ?? '';
             const username = this.getAttribute('data-username');
             const email = this.getAttribute('data-email');
             const role = this.getAttribute('data-role');
+            const bidang = this.getAttribute('data-bidang');
 
             // Set data in modal fields
             document.getElementById('edit_id').value = id;
             document.getElementById('edit_username').value = username;
             document.getElementById('edit_email').value = email;
             document.getElementById('edit_role').value = role;
+            document.getElementById('edit_bidang').value = bidang;
             document.getElementById('edit_password').value = ''; // Clear password field
         });
     });
